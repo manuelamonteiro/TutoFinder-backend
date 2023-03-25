@@ -28,6 +28,10 @@ export async function listTutorInfo(req: Request, res: Response) {
         const tutor = await tutorsService.getTutorById(Number(tutorId));
         return res.status(httpStatus.OK).send(tutor);
     } catch (error) {
-        return res.sendStatus(httpStatus.NOT_FOUND);
+        if (error.name === "NotFoundError") {
+            return res.sendStatus(httpStatus.NOT_FOUND);
+        }
+        
+        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
     }
 }

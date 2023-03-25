@@ -9,6 +9,14 @@ export async function paymentProcess(req: Request, res: Response) {
         const payment = await paymentService.postPayment(Number(userId), Number(tutorId));
         return res.status(httpStatus.OK).send(payment);
     } catch (error) {
-        return res.sendStatus(httpStatus.NOT_FOUND);
+        if (error.name === "NotFoundError") {
+            return res.sendStatus(httpStatus.NOT_FOUND);
+        }
+
+        if (error.name === "BadRequestError") {
+            return res.sendStatus(httpStatus.NOT_FOUND);
+        }
+
+        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
     }
 }

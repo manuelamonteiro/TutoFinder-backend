@@ -4,7 +4,7 @@ import tutorsRepository from "../repositories/tutors-repository";
 
 async function postBooking(userId: number, tutorId:number){
     const tutorIdTest = await tutorsRepository.findTutorById(tutorId);
-    if(!tutorIdTest){
+    if(!tutorIdTest || !tutorId){
       throw badRequestError();
     }
 

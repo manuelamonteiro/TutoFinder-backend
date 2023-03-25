@@ -5,9 +5,10 @@ import tutorsRepository from "../repositories/tutors-repository";
 
 async function postPayment(userId: number, tutorId:number){
   const tutorIdTest = await tutorsRepository.findTutorById(tutorId);
-  if(!tutorIdTest){
+  if(!tutorIdTest || !tutorId){
     throw badRequestError();
   }
+  
   const booking = await bookingRepository.findBooking(userId, tutorId);
   if(!booking || booking.userId !== userId){
     throw badRequestError();

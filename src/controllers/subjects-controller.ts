@@ -7,6 +7,10 @@ export async function listSubjects(req: Request, res: Response) {
         const subjects = await subjectsService.getSubjects();
         return res.status(httpStatus.OK).send(subjects);
     } catch (error) {
-        return res.sendStatus(httpStatus.NOT_FOUND);
+        if (error.name === "NotFoundError") {
+            return res.sendStatus(httpStatus.NOT_FOUND);
+        }
+
+        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
     }
 }
