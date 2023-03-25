@@ -5,6 +5,8 @@ import { connectDb, disconnectDB } from "./config/database";
 import { loadEnv } from "./config/envs";
 import { subjectsRouter } from "./routers/subjects-router";
 import { tutorsRouter } from "./routers/tutors-router";
+import { bookingRouter } from "./routers/booking-router";
+import { paymentRouter } from "./routers/payment-router";
 
 loadEnv();
 
@@ -14,6 +16,8 @@ app
   .use(express.json())
   .use(subjectsRouter)
   .use(tutorsRouter)
+  .use(bookingRouter)
+  .use(paymentRouter)
 
 export function init(): Promise<Express> {
   connectDb();
