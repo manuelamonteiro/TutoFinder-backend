@@ -11,7 +11,7 @@ export async function signUp(req: Request, res: Response) {
         res.status(httpStatus.CREATED).send({ message: "O usuário foi criado com sucesso!" });
     } catch (error) {
         if (error.name === "BadRequestError") {
-            return res.sendStatus(httpStatus.NOT_FOUND);
+            return res.sendStatus(httpStatus.BAD_REQUEST);
         }
 
         return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
@@ -26,7 +26,7 @@ export async function signIn(req: Request, res: Response) {
         res.status(httpStatus.OK).send({ token: result });
     } catch (error) {
         if (error.name === "BadRequestError") {
-            return res.sendStatus(httpStatus.NOT_FOUND);
+            return res.sendStatus(httpStatus.BAD_REQUEST);
         }
 
         return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);

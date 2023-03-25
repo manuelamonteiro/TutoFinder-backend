@@ -15,7 +15,7 @@ export async function paymentProcess(req: Request, res: Response) {
         }
 
         if (error.name === "BadRequestError") {
-            return res.sendStatus(httpStatus.NOT_FOUND);
+            return res.sendStatus(httpStatus.BAD_REQUEST);
         }
 
         return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
