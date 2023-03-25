@@ -7,6 +7,7 @@ import { subjectsRouter } from "./routers/subjects-router";
 import { tutorsRouter } from "./routers/tutors-router";
 import { bookingRouter } from "./routers/booking-router";
 import { paymentRouter } from "./routers/payment-router";
+import { userRouter } from "./routers/sign-router";
 
 loadEnv();
 
@@ -14,6 +15,7 @@ const app = express();
 app
   .use(cors())
   .use(express.json())
+  .use(userRouter)
   .use(subjectsRouter)
   .use(tutorsRouter)
   .use(bookingRouter)

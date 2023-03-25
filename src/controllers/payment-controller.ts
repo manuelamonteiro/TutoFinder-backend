@@ -6,8 +6,8 @@ export async function paymentProcess(req: Request, res: Response) {
     const userId = 1; //const { userId } = req;
     const { tutorId } = req.body;
     try {
-        const payment = await paymentService.postPayment(Number(userId), Number(tutorId));
-        return res.status(httpStatus.OK).send(payment);
+        await paymentService.postPayment(Number(userId), Number(tutorId));
+        return res.status(httpStatus.CREATED).send({ message: "Pagamento realizado com sucesso!" });
     } catch (error) {
         if (error.name === "NotFoundError") {
             return res.sendStatus(httpStatus.NOT_FOUND);

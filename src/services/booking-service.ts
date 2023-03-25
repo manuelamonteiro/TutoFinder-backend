@@ -8,8 +8,7 @@ async function postBooking(userId: number, tutorId:number){
       throw badRequestError();
     }
 
-    const booking = await bookingRepository.createBooking(userId, tutorId);
-    return booking;
+    await bookingRepository.createBooking(userId, tutorId);
 }
 
 const bookingService = {

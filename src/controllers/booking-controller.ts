@@ -6,8 +6,8 @@ export async function bookingProcess(req: Request, res: Response) {
     const userId = 1; //const { userId } = req;
     const { tutorId } = req.body;
     try {
-        const booking = await bookingService.postBooking(Number(userId), Number(tutorId));
-        return res.status(httpStatus.OK).send(booking);
+        await bookingService.postBooking(Number(userId), Number(tutorId));
+        return res.status(httpStatus.CREATED).send({ message: "Reserva realizada com sucesso!" });
     } catch (error) {
         if (error.name === "NotFoundError") {
             return res.sendStatus(httpStatus.NOT_FOUND);

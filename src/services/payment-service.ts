@@ -15,8 +15,7 @@ async function postPayment(userId: number, tutorId:number){
   }
 
   const bookingId = booking.id;
-  const payment = await paymentRepository.createPayment(bookingId);
-  return payment;
+  await paymentRepository.createPayment(bookingId);
 }
 
 const paymentService = {

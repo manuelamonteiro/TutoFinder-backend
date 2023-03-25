@@ -15,7 +15,7 @@ async function findBooking(userId: number, tutorId:number){
             userId: userId,
             tutorId: tutorId
         }
-    })
+    });
 }
 
 const bookingRepository = {
