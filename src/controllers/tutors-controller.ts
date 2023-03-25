@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import httpStatus from "http-status";
+
 import tutorsService from "../services/tutors-service";
 
 export async function listTutors(req: Request, res: Response) {
@@ -31,7 +32,7 @@ export async function listTutorInfo(req: Request, res: Response) {
         if (error.name === "NotFoundError") {
             return res.sendStatus(httpStatus.NOT_FOUND);
         }
-        
+
         return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
     }
 }

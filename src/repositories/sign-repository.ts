@@ -30,7 +30,15 @@ async function createSession(userId: number, token: string) {
     return prisma.sessions.create({
         data: {
             userId: userId,
-            token:token
+            token: token
+        }
+    });
+}
+
+async function findSession(token: string) {
+    return prisma.sessions.findFirst({
+        where: {
+            token: token
         }
     });
 }
@@ -39,7 +47,8 @@ const userRepository = {
     checkEmail,
     selectUser,
     insertUser,
-    createSession
+    createSession,
+    findSession
 };
 
 export default userRepository;

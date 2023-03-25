@@ -1,17 +1,17 @@
 import { prisma } from "../config/database";
 
-async function createBooking(userId: number, tutorId:number) {
+async function createBooking(userId: number, tutorId: number) {
     return prisma.booking.create({
-        data:{
+        data: {
             userId: userId,
             tutorId: tutorId
         }
     });
 }
 
-async function findBooking(userId: number, tutorId:number){
+async function findBooking(userId: number, tutorId: number) {
     return prisma.booking.findFirst({
-        where:{
+        where: {
             userId: userId,
             tutorId: tutorId
         }

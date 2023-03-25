@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import httpStatus from "http-status";
+
 import userService from "../services/sign-service";
 
 export async function signUp(req: Request, res: Response) {
-    const {name, email, password}= req.body;
+    const { name, email, password } = req.body;
 
     try {
         await userService.createUser(name, email, password);
@@ -18,7 +19,7 @@ export async function signUp(req: Request, res: Response) {
 }
 
 export async function signIn(req: Request, res: Response) {
-    const { email, password }= req.body;
+    const { email, password } = req.body;
 
     try {
         const result = await userService.login(email, password);

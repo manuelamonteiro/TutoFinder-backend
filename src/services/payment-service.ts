@@ -3,14 +3,14 @@ import { badRequestError } from "../errors/bad-request-error";
 import paymentRepository from "../repositories/payment-repository";
 import tutorsRepository from "../repositories/tutors-repository";
 
-async function postPayment(userId: number, tutorId:number){
+async function postPayment(userId: number, tutorId: number) {
   const tutorIdTest = await tutorsRepository.findTutorById(tutorId);
-  if(!tutorIdTest || !tutorId){
+  if (!tutorIdTest || !tutorId) {
     throw badRequestError();
   }
-  
+
   const booking = await bookingRepository.findBooking(userId, tutorId);
-  if(!booking || booking.userId !== userId){
+  if (!booking || booking.userId !== userId) {
     throw badRequestError();
   }
 
@@ -19,7 +19,7 @@ async function postPayment(userId: number, tutorId:number){
 }
 
 const paymentService = {
-    postPayment
-  }
-  
-  export default paymentService;
+  postPayment
+}
+
+export default paymentService;
