@@ -3,8 +3,17 @@ import httpStatus from "http-status";
 
 import userService from "../services/sign-service";
 
+type userSignUp = {
+    name: string,
+    email: string,
+    password: string
+}
+
+type userSignIn = Omit<userSignUp, "name">
+
+
 export async function signUp(req: Request, res: Response) {
-    const { name, email, password } = req.body;
+    const { name, email, password } = req.body as userSignUp;
 
     try {
         await userService.createUser(name, email, password);
@@ -19,7 +28,7 @@ export async function signUp(req: Request, res: Response) {
 }
 
 export async function signIn(req: Request, res: Response) {
-    const { email, password } = req.body;
+    const { email, password } = req.body as userSignIn;
 
     try {
         const result = await userService.login(email, password);
