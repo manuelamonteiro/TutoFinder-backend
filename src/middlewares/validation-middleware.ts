@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
+import { ObjectSchema } from "joi";
 
 
-export function validateSchema(body: any) {
+export function validateSchema(body: ObjectSchema) {
     return (req: Request, res: Response, next: NextFunction) => {
 
         const validationStatus = body.validate(req.body, { abortEarly: false });

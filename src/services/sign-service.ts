@@ -5,8 +5,8 @@ import userRepository from "../repositories/sign-repository";
 import { badRequestError } from "../errors/bad-request-error";
 
 async function createUser(name: string, email: string, password: string) {
-    const isEmailRegistered = await userRepository.checkEmail(email);
-    if (isEmailRegistered) {
+    const user = await userRepository.checkEmail(email);
+    if (user) {
         throw badRequestError();
     }
 
