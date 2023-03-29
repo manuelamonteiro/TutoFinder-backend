@@ -13,20 +13,21 @@ type JWTPayload = {
 export async function authenticateToken(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
     const token = authorization?.replace("Bearer ", "");
-    if (!token) {
-        throw unauthorizedError();
-    }
 
     try {
+        if (!token || !authorization) {
+            throw unauthorizedError();
+        }
+
         const { userId } = jwt.verify(token, process.env.JWT_SECRET) as JWTPayload;
 
         const session = await userRepository.findSession(token);
-        if (!session) unauthorizedError();
+        if (!session) throw unauthorizedError();
 
         res.locals.userId = userId;
+
+        next();
     } catch (error) {
         res.status(httpStatus.UNAUTHORIZED).send(unauthorizedError());
     }
-
-    next();
 }

@@ -1,15 +1,14 @@
 import express, { Express } from "express";
 import cors from "cors";
 
-import { connectDb, disconnectDB } from "./config/database";
 import { loadEnv } from "./config/envs";
+loadEnv();
+
+import { connectDb, disconnectDB } from "./config/database";
 import { subjectsRouter } from "./routers/subjects-router";
 import { tutorsRouter } from "./routers/tutors-router";
 import { bookingRouter } from "./routers/booking-router";
-import { paymentRouter } from "./routers/payment-router";
 import { userRouter } from "./routers/sign-router";
-
-loadEnv();
 
 const app = express();
 app
@@ -19,7 +18,6 @@ app
   .use(subjectsRouter)
   .use(tutorsRouter)
   .use(bookingRouter)
-  .use(paymentRouter)
 
 export function init(): Promise<Express> {
   connectDb();

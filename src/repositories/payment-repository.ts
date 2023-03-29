@@ -1,16 +1,16 @@
-import { prisma } from "../config/database";
+// import { prisma } from "../config/database";
 
-async function createPayment(bookingId: number) {
-    return prisma.payment.create({
-        data: {
-            bookingId: bookingId,
-            paid: true
-        }
-    });
-}
+// async function createPayment(bookingId: number) {
+//     return prisma.payment.create({
+//         data: {
+//             bookingId: bookingId,
+//             paid: true
+//         }
+//     });
+// }
 
-const paymentRepository = {
-    createPayment
-};
+// const paymentRepository = {
+//     createPayment
+// };
 
-export default paymentRepository;
+// export default paymentRepository;

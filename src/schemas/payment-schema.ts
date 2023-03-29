@@ -1,6 +1,6 @@
-import Joi from "joi";
+// import Joi from "joi";
 
-export const paymentSchema = Joi.object({
-    bookingId: Joi.number().required(),
-    paid: Joi.boolean().required()
-});
+// export const paymentSchema = Joi.object({
+//     bookingId: Joi.number().required(),
+//     paid: Joi.boolean().required()
+// });
