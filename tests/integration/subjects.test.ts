@@ -15,7 +15,7 @@ beforeAll(async () => {
 const server = supertest(app);
 
 describe("GET /subjects", () => {
-
+    
     describe("when token is valid", () => {
         it("should respond with status 404 when there is no subject", async () => {
             const user = await createUser();
