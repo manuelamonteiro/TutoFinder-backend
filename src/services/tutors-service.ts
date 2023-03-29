@@ -12,7 +12,7 @@ async function getTutorById(tutorId: number) {
 
 async function getTutorsBySubject(subjectId: number) {
   const tutors = await tutorsRepository.findTutorsBySubject(subjectId);
-  if (!tutors) {
+  if (tutors.length === 0) {
     throw notFoundError();
   }
 

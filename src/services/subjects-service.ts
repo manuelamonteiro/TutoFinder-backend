@@ -3,7 +3,7 @@ import { notFoundError } from "../errors/not-found-error";
 
 async function getSubjects() {
     const subjects = await subjectsRepository.findSubjects();
-    if (!subjects) {
+    if (subjects.length === 0) {
         throw notFoundError();
     }
 

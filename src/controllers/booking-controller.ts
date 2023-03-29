@@ -15,14 +15,12 @@ export async function bookingProcess(req: Request, res: Response) {
         await bookingService.postBooking(Number(userId), Number(tutorId));
         return res.status(httpStatus.CREATED).send({ message: "Reserva realizada com sucesso!" });
     } catch (error) {
-        if (error.name === "NotFoundError") {
-            return res.sendStatus(httpStatus.NOT_FOUND);
-        }
-
         if (error.name === "BadRequestError") {
             return res.sendStatus(httpStatus.BAD_REQUEST);
         }
 
-        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+        if(error.name === "UnauthorizedError"){
+            return res.sendStatus(httpStatus.UNAUTHORIZED);
+        }
     }
 }

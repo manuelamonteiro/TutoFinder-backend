@@ -7,10 +7,6 @@ export async function listTutors(req: Request, res: Response) {
     const { subjectId } = req.params;
 
     try {
-        if (!subjectId) {
-            return res.sendStatus(httpStatus.NOT_FOUND);
-        }
-
         const tutors = await tutorsService.getTutorsBySubject(Number(subjectId));
         return res.status(httpStatus.OK).send(tutors);
     } catch (error) {
@@ -18,7 +14,9 @@ export async function listTutors(req: Request, res: Response) {
             return res.sendStatus(httpStatus.NOT_FOUND);
         }
 
-        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+        if(error.name === "UnauthorizedError"){
+            return res.sendStatus(httpStatus.UNAUTHORIZED);
+        }
     }
 }
 
@@ -26,10 +24,6 @@ export async function listTutorInfo(req: Request, res: Response) {
     const { tutorId } = req.params;
 
     try {
-        if (!tutorId) {
-            return res.sendStatus(httpStatus.NOT_FOUND);
-        }
-
         const tutor = await tutorsService.getTutorById(Number(tutorId));
         return res.status(httpStatus.OK).send(tutor);
     } catch (error) {
@@ -37,6 +31,8 @@ export async function listTutorInfo(req: Request, res: Response) {
             return res.sendStatus(httpStatus.NOT_FOUND);
         }
 
-        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+        if(error.name === "UnauthorizedError"){
+            return res.sendStatus(httpStatus.UNAUTHORIZED);
+        }
     }
 }

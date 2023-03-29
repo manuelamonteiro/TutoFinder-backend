@@ -16,14 +16,12 @@ export async function signUp(req: Request, res: Response) {
     const { name, email, password } = req.body as userSignUp;
 
     try {
-        await userService.createUser(name, email, password);
-        res.status(httpStatus.CREATED).send({ message: "O usuário foi criado com sucesso!" });
+        const user = await userService.createUser(name, email, password);
+        res.status(httpStatus.CREATED).send(user);
     } catch (error) {
         if (error.name === "BadRequestError") {
             return res.sendStatus(httpStatus.BAD_REQUEST);
         }
-
-        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
     }
 }
 
@@ -37,7 +35,5 @@ export async function signIn(req: Request, res: Response) {
         if (error.name === "BadRequestError") {
             return res.sendStatus(httpStatus.BAD_REQUEST);
         }
-
-        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
     }
 }

@@ -12,6 +12,8 @@ export async function listSubjects(req: Request, res: Response) {
             return res.sendStatus(httpStatus.NOT_FOUND);
         }
 
-        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+        if(error.name === "UnauthorizedError"){
+            return res.sendStatus(httpStatus.UNAUTHORIZED);
+        }
     }
 }
