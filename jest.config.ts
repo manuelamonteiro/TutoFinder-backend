@@ -12,7 +12,7 @@ module.exports = {
         "axios": "axios/dist/node/axios.cjs"
     },
     restoreMocks: true,
-    collectCoverage: true,
-    coverageDirectory: 'coverage',
-    collectCoverageFrom: ['<rootDir>/src/**/*.ts']
+    // collectCoverage: true,
+    // coverageDirectory: 'coverage',
+    // collectCoverageFrom: ['<rootDir>/src/**/*.ts']
 };
