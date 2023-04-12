@@ -51,7 +51,7 @@ describe("GET /subjects", () => {
             expect(response.status).toBe(httpStatus.NOT_FOUND);
         });
 
-        it("should respond with status 200 and subject data", async () => {
+        it("should respond with status 200 and send subject data", async () => {
             const user = await createUser();
             const token = await generateValidToken(user);
             const subject = await createSubject();

@@ -1,20 +1,19 @@
 {
-    "compilerOptions": {
-      "outDir": "dist",
-      "esModuleInterop": true,
-      "moduleResolution": "node",
-      "module": "commonjs"
-    },
-    "ts-node": {
-      "esm": true
-    },
-    "rootDirs": [
-        "src",
-        "tests"
-      ],
-      "include": [
-        "src",
-        "tests"
-      ]
-  }
-  
+  "compilerOptions": {
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "rootDirs": [
+      "src",
+      "tests"
+    ],
+    "include": [
+      "src",
+      "tests"
+    ]
+}

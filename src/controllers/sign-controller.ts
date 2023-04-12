@@ -36,4 +36,17 @@ export async function signIn(req: Request, res: Response) {
             return res.sendStatus(httpStatus.BAD_REQUEST);
         }
     }
+} 
+
+export async function signInOauth(req: Request, res: Response) {
+    const { code } = req.body;
+
+    try {
+        const result = await userService.loginOauth(code.toString());
+        res.status(httpStatus.OK).send({ token: result });
+    } catch (error) {
+        if (error.name === "BadRequestError") {
+            return res.sendStatus(httpStatus.BAD_REQUEST);
+        }
+    }
 }

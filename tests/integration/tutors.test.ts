@@ -105,7 +105,7 @@ describe("GET /tutor", () => {
       expect(response.status).toBe(httpStatus.NOT_FOUND);
     });
 
-    it("should respond with status 200 and tutor data", async () => {
+    it("should respond with status 200 and send tutor data", async () => {
       const user = await createUser();
       const token = await generateValidToken(user);
       const subject = await createSubject();
