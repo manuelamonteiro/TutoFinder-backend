@@ -9,10 +9,10 @@ module.exports = {
     moduleNameMapper: {
         "@/(.*)": "<rootDir>/src/$1",
         "@test/(.*)": "<rootDir>/tests/$1",
-        "axios": "axios/dist/node/axios.cjs"
+        "^/axios/(.*)$": "<rootDir>/node_modules/axios/dist/node/axios.cjs"
     },
     restoreMocks: true,
-    // collectCoverage: true,
-    // coverageDirectory: 'coverage',
-    // collectCoverageFrom: ['<rootDir>/src/**/*.ts']
+    collectCoverage: true,
+    coverageDirectory: 'coverage',
+    collectCoverageFrom: ['<rootDir>/src/**/*.ts']
 };
