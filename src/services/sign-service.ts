@@ -60,6 +60,7 @@ async function loginOauth(code: string) {
 
 async function exchangeCodeForAccessToken(code: string) {
     const GITHUB_ACCESS_TOKEN_URL = 'https://github.com/login/oauth/access_token';
+
     const params = {
         code,
         grant_type: 'authorization_code',
